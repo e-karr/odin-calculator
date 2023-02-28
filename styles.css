@@ -6,3 +6,11 @@ body {
     align-items: center;
     background-color: rgb(138, 43, 226, .30);
 }
+
+.calc-container {
+    border: 1px solid black; /* for debugging */
+}
+
+.calc-row {
+    border: 1px solid blue; /* for debugging */
+}
