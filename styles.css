@@ -5,6 +5,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: rgb(138, 43, 226, .30);
+    min-height: 100vh;
 }
 
 .calc-container {
