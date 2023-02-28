@@ -6,15 +6,57 @@ body {
     align-items: center;
     background-color: rgb(138, 43, 226, .30);
     min-height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3vh;
+    font-weight: 700;
 }
 
 .calc-container {
-    border: 1vh solid black;
+    padding: 1vh;
     border-radius: 1vh;
+    background-color: rgb(105, 104, 104);
 }
 
 .calc-row {
-    border: 1px solid blue; /* for debugging */
+    /* border: 1px solid blue; for debugging */
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
+}
+
+button {
+    all: unset;
+}
+
+.calc-button {
+    /* border: 1px solid red; for debugging */
+    padding: 5vh;
+    width: 4vh;
+    flex: 1;
+    text-align: center;
+    border-radius: 1vh;
+    margin: .5vh;
+}
+
+[value="0"] {
+    flex: 4.5;
+}
+
+#screen {
+    /* border: 1px solid red; for debugging */
+    padding: 3vh;
+    background-color: rgb(212, 212, 212);
+    margin: .5vh;
+    font-size: 5vh;
+}
+
+.operate {
+    background-color: pink;
+}
+
+.number, [value="."] {
+    background-color: rgb(246, 157, 246);
+}
+
+#clear, #percent, #positiveNegative {
+    background-color: rgb(94, 202, 245);
 }
