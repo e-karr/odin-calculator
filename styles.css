@@ -9,9 +9,12 @@ body {
 }
 
 .calc-container {
-    border: 1px solid black; /* for debugging */
+    border: 1vh solid black;
+    border-radius: 1vh;
 }
 
 .calc-row {
     border: 1px solid blue; /* for debugging */
+    display: flex;
+    justify-content: space-between;
 }
