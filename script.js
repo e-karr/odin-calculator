@@ -6,6 +6,18 @@ buttons.forEach(button => button.addEventListener('mousedown', addClickStyle));
 buttons.forEach(button => button.addEventListener('mouseup', removeClickStyle));
 buttons.forEach(button => button.addEventListener('mouseleave', removeClickStyle));
 
+numbers.forEach(number => number.addEventListener('click', () => {
+    let value = number.value;
+
+    if (display.textContent === "0") {
+        display.textContent = "";
+        display.textContent += value;
+    } else {
+        display.textContent += value;
+    }
+    
+}));
+
 function add(num1, num2) {
     return num1 + num2;
 }
