@@ -49,6 +49,13 @@ button {
     font-size: 5vh;
     display: flex;
     flex-direction: column;
+    justify-content: end;
+}
+
+.calculation {
+    word-break: break-word;
+    max-width: 400px;
+    text-align: end;
 }
 
 .answer {

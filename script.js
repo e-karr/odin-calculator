@@ -1,12 +1,20 @@
 let buttons = document.querySelectorAll('.calc-button');
 let display = document.querySelector('.calculation');
 let numbers = document.querySelectorAll('.number');
+let operators = document.querySelectorAll('.operate');
 
 buttons.forEach(button => button.addEventListener('mousedown', addClickStyle));
 buttons.forEach(button => button.addEventListener('mouseup', removeClickStyle));
 buttons.forEach(button => button.addEventListener('mouseleave', removeClickStyle));
 
 numbers.forEach(number => number.addEventListener('click', changeScreen));
+operators.forEach(operator => operator.addEventListener('click', operatorScreen));
+
+function operatorScreen(e) {
+    let operator = this.value;
+
+    display.textContent += ` ${operator} `;
+}
 
 function changeScreen(e) {
     let value = this.value;
