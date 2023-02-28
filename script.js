@@ -6,10 +6,17 @@ let answer = document.querySelector('.answer');
 let equal = document.querySelector('#equals');
 let clear = document.querySelector('#clear');
 let equalClicked = false;
+let percentage = document.querySelector('#percent');
 
 let firstNum = "";
 let secondNum = "";
 let operator = "";
+
+percentage.addEventListener('click', () => {
+    let number = Number(answer.textContent);
+    let displayPercent = percent(number);
+    answer.textContent = displayPercent;
+});
 
 buttons.forEach(button => button.addEventListener('mousedown', addClickStyle));
 buttons.forEach(button => button.addEventListener('mouseup', removeClickStyle));
@@ -102,6 +109,10 @@ function divide(num1, num2) {
         return "Try Again";
     }
     return Math.round((num1 / num2) * 10000) / 10000;
+}
+
+function percent(number) {
+    return `${number * 100}%`;
 }
 
 function operate(operator, num1, num2) {
