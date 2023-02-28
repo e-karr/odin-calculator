@@ -60,3 +60,7 @@ button {
 #clear, #percent, #positiveNegative {
     background-color: rgb(94, 202, 245);
 }
+
+.clicked {
+    opacity: 60%;
+}

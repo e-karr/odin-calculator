@@ -1,3 +1,11 @@
+let buttons = document.querySelectorAll('.calc-button');
+let display = document.querySelector('#screen');
+let numbers = document.querySelectorAll('.number');
+
+buttons.forEach(button => button.addEventListener('mousedown', addClickStyle));
+buttons.forEach(button => button.addEventListener('mouseup', removeClickStyle));
+buttons.forEach(button => button.addEventListener('mouseleave', removeClickStyle));
+
 function add(num1, num2) {
     return num1 + num2;
 }
@@ -26,5 +34,12 @@ function operate(operator, num1, num2) {
         case "/":
             return divide(num1, num2);
     }
-    
+}
+
+function addClickStyle(e) {
+    this.classList.add("clicked");
+}
+
+function removeClickStyle(e) {
+    this.classList.remove("clicked");
 }
