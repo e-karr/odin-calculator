@@ -1,13 +1,15 @@
 let buttons = document.querySelectorAll('.calc-button');
-let display = document.querySelector('#screen');
+let display = document.querySelector('.calculation');
 let numbers = document.querySelectorAll('.number');
 
 buttons.forEach(button => button.addEventListener('mousedown', addClickStyle));
 buttons.forEach(button => button.addEventListener('mouseup', removeClickStyle));
 buttons.forEach(button => button.addEventListener('mouseleave', removeClickStyle));
 
-numbers.forEach(number => number.addEventListener('click', () => {
-    let value = number.value;
+numbers.forEach(number => number.addEventListener('click', changeScreen));
+
+function changeScreen(e) {
+    let value = this.value;
 
     if (display.textContent === "0") {
         display.textContent = "";
@@ -15,8 +17,7 @@ numbers.forEach(number => number.addEventListener('click', () => {
     } else {
         display.textContent += value;
     }
-    
-}));
+}
 
 function add(num1, num2) {
     return num1 + num2;

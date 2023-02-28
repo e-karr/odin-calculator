@@ -41,12 +41,18 @@ button {
     flex: 4.7;
 }
 
-#screen {
+.screen {
     /* border: 1px solid red; for debugging */
     padding: 3vh;
     background-color: rgb(212, 212, 212);
     margin: .5vh;
     font-size: 5vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.answer {
+    min-height: 6vh;
 }
 
 .operate {
