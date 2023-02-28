@@ -31,7 +31,8 @@ clear.addEventListener('click', allClear);
 // }));
 
 equal.addEventListener('click', () => {
-    displayAnswer(operate(operator, Number(firstNum), Number(secondNum)));
+    let calculation = operate(operator, Number(firstNum), Number(secondNum))
+    displayAnswer(calculation);
     firstNum = answer.textContent;
     secondNum = "";
 });
