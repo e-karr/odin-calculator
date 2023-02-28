@@ -4,6 +4,7 @@ let numbers = document.querySelectorAll('.number');
 let operators = document.querySelectorAll('.operate');
 let answer = document.querySelector('.answer');
 let equal = document.querySelector('#equals');
+let clear = document.querySelector('#clear');
 
 let firstNum = "";
 let secondNum = "";
@@ -19,6 +20,8 @@ numbers.forEach(number => number.addEventListener('click', storeNumberValues));
 operators.forEach(operator => operator.addEventListener('click', operatorScreen));
 operators.forEach(operator => operator.addEventListener('click', storeOperatorValue));
 
+clear.addEventListener('click', allClear);
+
 // operators.forEach(button => button.addEventListener('click', () => {
 //     if (operator !== "") {
 //         displayAnswer(operate(operator, Number(firstNum), Number(secondNum)));
@@ -32,6 +35,15 @@ equal.addEventListener('click', () => {
     firstNum = answer.textContent;
     secondNum = "";
 });
+
+function allClear() {
+    firstNum = "";
+    secondNum = "";
+    operator = "";
+
+    display.textContent = "0";
+    answer.textContent = "";
+}
 
 function operatorScreen(e) {
     let operatorValue = this.value;
