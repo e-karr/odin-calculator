@@ -3,7 +3,7 @@ let display = document.querySelector('.calculation');
 let numbers = document.querySelectorAll('.number');
 let operators = document.querySelectorAll('.operate');
 let answer = document.querySelector('.answer');
-
+let equal = document.querySelector('#equals');
 
 let firstNum = "";
 let secondNum = "";
@@ -15,8 +15,23 @@ buttons.forEach(button => button.addEventListener('mouseleave', removeClickStyle
 
 numbers.forEach(number => number.addEventListener('click', numberScreen));
 numbers.forEach(number => number.addEventListener('click', storeNumberValues));
+
 operators.forEach(operator => operator.addEventListener('click', operatorScreen));
 operators.forEach(operator => operator.addEventListener('click', storeOperatorValue));
+
+// operators.forEach(button => button.addEventListener('click', () => {
+//     if (operator !== "") {
+//         displayAnswer(operate(operator, Number(firstNum), Number(secondNum)));
+//         // firstNum = answer.textContent;
+//         // secondNum = "";
+//     }
+// }));
+
+equal.addEventListener('click', () => {
+    displayAnswer(operate(operator, Number(firstNum), Number(secondNum)));
+    firstNum = answer.textContent;
+    secondNum = "";
+});
 
 function operatorScreen(e) {
     let operatorValue = this.value;
@@ -26,7 +41,6 @@ function operatorScreen(e) {
 
 function storeOperatorValue(e) {
     operator = this.value;
-    console.log(operator);
 }
 
 function numberScreen(e) {
@@ -43,10 +57,8 @@ function numberScreen(e) {
 function storeNumberValues(e) {
     if (operator === "") {
         firstNum += this.value;
-        console.log(firstNum);
     } else {
         secondNum += this.value;
-        console.log(secondNum);
     }
 }
 
