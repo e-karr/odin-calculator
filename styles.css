@@ -62,7 +62,7 @@ button {
     min-height: 6vh;
 }
 
-.operate {
+.operate, #equals {
     background-color: pink;
 }
 
