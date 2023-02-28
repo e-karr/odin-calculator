@@ -49,6 +49,7 @@ function operatorScreen(e) {
 function storeOperatorValue(e) {
     if (equalClicked) {
         display.textContent = `${firstNum} ${this.value} `;
+        equalClicked = false;
     }
     if (operator !== "") {
         displayAnswer(operate(operator, Number(firstNum), Number(secondNum)));
@@ -97,6 +98,9 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
+    if (num2 === 0) {
+        return "Try Again";
+    }
     return num1 / num2;
 }
 
