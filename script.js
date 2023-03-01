@@ -11,6 +11,7 @@ let percentage = document.querySelector('#percent');
 let firstNum = "";
 let secondNum = "";
 let operator = "";
+let lastAnswer = 0;
 
 percentage.addEventListener('click', () => {
     let number = Number(answer.textContent);
@@ -31,10 +32,10 @@ operators.forEach(operator => operator.addEventListener('click', storeOperatorVa
 clear.addEventListener('click', allClear);
 
 equal.addEventListener('click', () => {
-    let calculation = operate(operator, Number(firstNum), Number(secondNum))
+    let calculation = operate(operator, Number(firstNum), Number(secondNum));
     displayAnswer(calculation);
-    firstNum = answer.textContent;
     secondNum = "";
+    lastAnswer = calculation;
     equalClicked = true;
 });
 
@@ -45,6 +46,8 @@ function allClear() {
 
     display.textContent = "0";
     answer.textContent = "";
+
+    equalClicked = false;
 }
 
 function operatorScreen(e) {
@@ -55,12 +58,14 @@ function operatorScreen(e) {
 
 function storeOperatorValue(e) {
     if (equalClicked) {
-        display.textContent = `${firstNum} ${this.value} `;
+        display.textContent = `${lastAnswer} ${this.value} `;
+        operator = this.value;
+        firstNum = lastAnswer;
         equalClicked = false;
-    }
-    if (operator !== "") {
-        displayAnswer(operate(operator, Number(firstNum), Number(secondNum)));
-        firstNum = answer.textContent;
+    } else if (operator !== "") {
+        let calculation = operate(operator, Number(firstNum), Number(secondNum));
+        displayAnswer(calculation);
+        firstNum = calculation;
         secondNum = "";
 
         operator = this.value;
@@ -84,6 +89,9 @@ function storeNumberValues(e) {
     if (operator === "") {
         firstNum += this.value;
     } else {
+        if (equalClicked) {
+            firstNum = answer.textContent;
+        }
         secondNum += this.value;
     }
 }
