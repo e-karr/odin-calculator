@@ -5,12 +5,13 @@ let operators = document.querySelectorAll('.operate');
 let answer = document.querySelector('.answer');
 let equal = document.querySelector('#equals');
 let clear = document.querySelector('#clear');
-let equalClicked = false;
+let decimal = document.querySelector('#deciaml');
 let percentage = document.querySelector('#percent');
 
 let firstNum = "";
 let secondNum = "";
 let operator = "";
+let equalClicked = false;
 let lastAnswer = 0;
 
 percentage.addEventListener('click', () => {
