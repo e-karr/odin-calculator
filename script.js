@@ -51,6 +51,12 @@ function allClear() {
     equalClicked = false;
 }
 
+function addDecimal(e) {
+    if (firstNum === "") {
+        
+    }
+}
+
 function operatorScreen(e) {
     let operatorValue = this.value;
 
