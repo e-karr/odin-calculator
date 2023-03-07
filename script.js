@@ -7,6 +7,7 @@ let equal = document.querySelector('#equals');
 let clear = document.querySelector('#clear');
 let decimal = document.querySelector('#decimal');
 let percentage = document.querySelector('#percent');
+let positiveNegative = document.querySelector('#positiveNegative');
 
 let firstNum = "";
 let secondNum = "";
