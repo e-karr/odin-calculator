@@ -5,7 +5,7 @@ let operators = document.querySelectorAll('.operate');
 let currentNumber = document.querySelector('.current-number');
 let equal = document.querySelector('#equals');
 let clear = document.querySelector('#clear');
-let decimal = document.querySelector('#deciaml');
+let decimal = document.querySelector('#decimal');
 let percentage = document.querySelector('#percent');
 
 let firstNum = "";
@@ -13,6 +13,7 @@ let secondNum = "";
 let operator = "";
 let equalClicked = false;
 let lastAnswer = 0;
+let decimalAllowed = true;
 
 percentage.addEventListener('click', () => {
     let number = Number(currentNumber.textContent);
@@ -27,6 +28,8 @@ buttons.forEach(button => button.addEventListener('mouseleave', removeClickStyle
 numbers.forEach(number => number.addEventListener('click', getNumberValues));
 
 operators.forEach(operator => operator.addEventListener('click', getOperatorValue));
+
+decimal.addEventListener('click', addDecimal);
 
 clear.addEventListener('click', allClear);
 
@@ -48,15 +51,26 @@ function allClear() {
     currentNumber.textContent = "0";
 
     equalClicked = false;
+
+    decimalAllowed = true;
 }
 
 function addDecimal(e) {
-    if (firstNum === "") {
-        
+    if (decimalAllowed) {
+        currentNumber.textContent += this.value;
+
+        if (operator === "") {
+            firstNum += this.value;
+        } else {
+            secondNum += this.value;
+        }
+
+        decimalAllowed = false;
     }
 }
 
 function getOperatorValue(e) {
+    decimalAllowed = true;
     let operatorValue = this.value;
 
     if (equalClicked) {
