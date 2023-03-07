@@ -46,6 +46,10 @@ equal.addEventListener('click', () => {
     percentAllowed = true;
 });
 
+positiveNegative.addEventListener('click', () => {
+    
+});
+
 function allClear() {
     firstNum = "";
     secondNum = "";
