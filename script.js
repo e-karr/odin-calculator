@@ -2,7 +2,7 @@ let buttons = document.querySelectorAll('.calc-button');
 let display = document.querySelector('.calculation');
 let numbers = document.querySelectorAll('.number');
 let operators = document.querySelectorAll('.operate');
-let answer = document.querySelector('.answer');
+let currentNumber = document.querySelector('.current-number');
 let equal = document.querySelector('#equals');
 let clear = document.querySelector('#clear');
 let decimal = document.querySelector('#deciaml');
@@ -15,9 +15,9 @@ let equalClicked = false;
 let lastAnswer = 0;
 
 percentage.addEventListener('click', () => {
-    let number = Number(answer.textContent);
+    let number = Number(currentNumber.textContent);
     let displayPercent = percent(number);
-    answer.textContent = displayPercent;
+    currentNumber.textContent = displayPercent;
 });
 
 buttons.forEach(button => button.addEventListener('mousedown', addClickStyle));
@@ -46,7 +46,7 @@ function allClear() {
     operator = "";
 
     display.textContent = "0";
-    answer.textContent = "";
+    currentNumber.textContent = "";
 
     equalClicked = false;
 }
@@ -104,7 +104,7 @@ function storeNumberValues(e) {
 }
 
 function displayAnswer(value) {
-    answer.textContent = value;
+    currentNumber.textContent = value;
 }
 
 function add(num1, num2) {
