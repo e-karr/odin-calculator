@@ -14,11 +14,13 @@ let operator = "";
 let equalClicked = false;
 let lastAnswer = 0;
 let decimalAllowed = true;
+let percentAllowed = false;
 
 percentage.addEventListener('click', () => {
-    let number = Number(currentNumber.textContent);
-    let displayPercent = percent(number);
-    currentNumber.textContent = displayPercent;
+    if (percentAllowed) {
+        let displayPercent = percent(lastAnswer);
+        currentNumber.textContent = displayPercent;
+    }
 });
 
 buttons.forEach(button => button.addEventListener('mousedown', addClickStyle));
@@ -40,6 +42,7 @@ equal.addEventListener('click', () => {
     secondNum = "";
     lastAnswer = calculation;
     equalClicked = true;
+    percentAllowed = true;
 });
 
 function allClear() {
@@ -51,8 +54,8 @@ function allClear() {
     currentNumber.textContent = "0";
 
     equalClicked = false;
-
     decimalAllowed = true;
+    percentAllowed = false;
 }
 
 function addDecimal(e) {
@@ -71,6 +74,7 @@ function addDecimal(e) {
 
 function getOperatorValue(e) {
     decimalAllowed = true;
+    percentAllowed = false;
     let operatorValue = this.value;
 
     if (equalClicked) {
