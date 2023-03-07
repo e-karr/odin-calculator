@@ -47,6 +47,20 @@ equal.addEventListener('click', () => {
 });
 
 positiveNegative.addEventListener('click', () => {
+    let positive;
+    let negative;
+
+    if (currentNumber.textContent.includes('-')) {
+        positive = currentNumber.textContent.slice(1);
+        currentNumber.textContent = positive;
+    } else if (currentNumber.textContent === "0") {
+        currentNumber.textContent = "-";
+    } else {
+        negative = currentNumber.textContent.split("")
+        negative.unshift("-");
+        negative = negative.join("");
+        currentNumber.textContent = negative
+    }
     
 });
 
