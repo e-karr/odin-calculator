@@ -24,17 +24,16 @@ buttons.forEach(button => button.addEventListener('mousedown', addClickStyle));
 buttons.forEach(button => button.addEventListener('mouseup', removeClickStyle));
 buttons.forEach(button => button.addEventListener('mouseleave', removeClickStyle));
 
-numbers.forEach(number => number.addEventListener('click', numberScreen));
-numbers.forEach(number => number.addEventListener('click', storeNumberValues));
+numbers.forEach(number => number.addEventListener('click', getNumberValues));
 
-operators.forEach(operator => operator.addEventListener('click', operatorScreen));
-operators.forEach(operator => operator.addEventListener('click', storeOperatorValue));
+operators.forEach(operator => operator.addEventListener('click', getOperatorValue));
 
 clear.addEventListener('click', allClear);
 
 equal.addEventListener('click', () => {
     let calculation = operate(operator, Number(firstNum), Number(secondNum));
     displayAnswer(calculation);
+    display.textContent += secondNum;
     secondNum = "";
     lastAnswer = calculation;
     equalClicked = true;
@@ -45,8 +44,8 @@ function allClear() {
     secondNum = "";
     operator = "";
 
-    display.textContent = "0";
-    currentNumber.textContent = "";
+    display.textContent = "";
+    currentNumber.textContent = "0";
 
     equalClicked = false;
 }
@@ -57,49 +56,47 @@ function addDecimal(e) {
     }
 }
 
-function operatorScreen(e) {
+function getOperatorValue(e) {
     let operatorValue = this.value;
 
-    display.textContent += ` ${operatorValue} `;
-}
-
-function storeOperatorValue(e) {
     if (equalClicked) {
-        display.textContent = `${lastAnswer} ${this.value} `;
+        display.textContent = `${lastAnswer} ${operatorValue} `;
+        currentNumber.textContent = "";
         operator = this.value;
         firstNum = lastAnswer;
         equalClicked = false;
     } else if (operator !== "") {
+        display.textContent += `${secondNum} ${operatorValue} `;
+        currentNumber.textContent = "";
         let calculation = operate(operator, Number(firstNum), Number(secondNum));
-        displayAnswer(calculation);
         firstNum = calculation;
         secondNum = "";
 
         operator = this.value;
     } else {
+        display.textContent += `${firstNum} ${operatorValue} `;
+        currentNumber.textContent = "";
         operator = this.value;
     }
 }
 
-function numberScreen(e) {
+function getNumberValues(e) {
     let number = this.value;
 
-    if (display.textContent === "0") {
-        display.textContent = "";
-        display.textContent += number;
-    } else {
-        display.textContent += number;
-    }
-}
-
-function storeNumberValues(e) {
     if (operator === "") {
-        firstNum += this.value;
+        firstNum += number;
     } else {
         if (equalClicked) {
-            firstNum = answer.textContent;
+            firstNum = currentNumber.textContent;
         }
-        secondNum += this.value;
+        secondNum += number;
+    }
+
+    if (currentNumber.textContent === "0") {
+        currentNumber.textContent = "";
+        currentNumber.textContent += number;
+    } else {
+        currentNumber.textContent += number;
     }
 }
 

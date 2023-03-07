@@ -56,6 +56,7 @@ button {
     word-break: break-word;
     max-width: 400px;
     text-align: end;
+    min-height: 6vh;
 }
 
 .current-number {
