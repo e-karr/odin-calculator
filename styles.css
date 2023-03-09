@@ -29,7 +29,7 @@ button {
 
 .calc-button {
     /* border: 1px solid red; for debugging */
-    padding: 5vh;
+    padding: 4vh;
     width: 4vh;
     flex: 1;
     text-align: center;
@@ -38,7 +38,7 @@ button {
 }
 
 [value="0"] {
-    flex: 4.7;
+    flex: 4.3;
 }
 
 .screen {
