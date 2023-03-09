@@ -2,5 +2,7 @@
 
 Calculator based on The Odin Project
 
-Currently working on the below features:
-- need to add functionality to +/- button
+Future features to add: 
+* backspace
+* keyboard functionality
+
