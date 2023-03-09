@@ -7,6 +7,7 @@ let equal = document.querySelector('#equals');
 let clear = document.querySelector('#clear');
 let decimal = document.querySelector('#decimal');
 let percentage = document.querySelector('#percent');
+let positiveNegative = document.querySelector('#positiveNegative');
 
 let firstNum = "";
 let secondNum = "";
@@ -15,6 +16,7 @@ let equalClicked = false;
 let lastAnswer = 0;
 let decimalAllowed = true;
 let percentAllowed = false;
+// let positiveNegativeClicked = false;
 
 percentage.addEventListener('click', () => {
     if (percentAllowed) {
@@ -43,6 +45,37 @@ equal.addEventListener('click', () => {
     lastAnswer = calculation;
     equalClicked = true;
     percentAllowed = true;
+    decimalAllowed = false;
+});
+
+positiveNegative.addEventListener('click', () => {
+    if (currentNumber.textContent.includes('-')) {
+        let positive = currentNumber.textContent.slice(1);
+            currentNumber.textContent = positive;
+    
+            if (operator === "") {
+                firstNum = positive;
+            } else if (!equalClicked) {
+                secondNum = positive;
+            } else {
+                lastAnswer = positive;
+            }
+        } else if (currentNumber.textContent === "0") {
+            currentNumber.textContent = "-";
+        } else {
+            let negative = currentNumber.textContent.split("")
+            negative.unshift("-");
+            negative = negative.join("");
+            currentNumber.textContent = negative
+    
+            if (operator === "") {
+                firstNum = negative;
+            } else if (!equalClicked) {
+                secondNum = negative;
+            } else {
+                lastAnswer = negative;
+            }
+        }
 });
 
 function allClear() {
@@ -75,6 +108,7 @@ function addDecimal(e) {
 function getOperatorValue(e) {
     decimalAllowed = true;
     percentAllowed = false;
+
     let operatorValue = this.value;
 
     if (equalClicked) {
@@ -102,6 +136,9 @@ function getNumberValues(e) {
     let number = this.value;
 
     if (operator === "") {
+        if (currentNumber.textContent === "-") {
+            firstNum += "-";
+        }
         firstNum += number;
     } else {
         if (equalClicked) {
@@ -142,7 +179,8 @@ function divide(num1, num2) {
 }
 
 function percent(number) {
-    return `${number * 100}%`;
+    num = Math.round((number * 100) * 10000) / 10000;
+    return `${num}%`;
 }
 
 function operate(operator, num1, num2) {
