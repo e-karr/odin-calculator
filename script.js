@@ -16,7 +16,7 @@ let equalClicked = false;
 let lastAnswer = 0;
 let decimalAllowed = true;
 let percentAllowed = false;
-let positiveNegativeAllowed = true;
+// let positiveNegativeClicked = false;
 
 percentage.addEventListener('click', () => {
     if (percentAllowed) {
@@ -46,35 +46,36 @@ equal.addEventListener('click', () => {
     equalClicked = true;
     percentAllowed = true;
     decimalAllowed = false;
-    positiveNegativeAllowed = false;
 });
 
 positiveNegative.addEventListener('click', () => {
-    if (positiveNegativeAllowed) {
-        if (currentNumber.textContent.includes('-')) {
-            let positive = currentNumber.textContent.slice(1);
-             currentNumber.textContent = positive;
-     
-             if (operator === "") {
-                 firstNum = positive;
-             } else {
-                 secondNum = positive;
-             }
-         } else if (currentNumber.textContent === "0") {
-             currentNumber.textContent = "-";
-         } else {
-             let negative = currentNumber.textContent.split("")
-             negative.unshift("-");
-             negative = negative.join("");
-             currentNumber.textContent = negative
-     
-             if (operator === "") {
-                 firstNum = negative;
-             } else {
-                 secondNum = negative;
-             }
-         }
-    }
+    if (currentNumber.textContent.includes('-')) {
+        let positive = currentNumber.textContent.slice(1);
+            currentNumber.textContent = positive;
+    
+            if (operator === "") {
+                firstNum = positive;
+            } else if (!equalClicked) {
+                secondNum = positive;
+            } else {
+                lastAnswer = positive;
+            }
+        } else if (currentNumber.textContent === "0") {
+            currentNumber.textContent = "-";
+        } else {
+            let negative = currentNumber.textContent.split("")
+            negative.unshift("-");
+            negative = negative.join("");
+            currentNumber.textContent = negative
+    
+            if (operator === "") {
+                firstNum = negative;
+            } else if (!equalClicked) {
+                secondNum = negative;
+            } else {
+                lastAnswer = negative;
+            }
+        }
 });
 
 function allClear() {
@@ -107,7 +108,6 @@ function addDecimal(e) {
 function getOperatorValue(e) {
     decimalAllowed = true;
     percentAllowed = false;
-    positiveNegativeAllowed = true;
 
     let operatorValue = this.value;
 
