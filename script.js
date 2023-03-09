@@ -16,7 +16,6 @@ let equalClicked = false;
 let lastAnswer = 0;
 let decimalAllowed = true;
 let percentAllowed = false;
-// let positiveNegativeClicked = false;
 
 percentage.addEventListener('click', () => {
     if (percentAllowed) {
